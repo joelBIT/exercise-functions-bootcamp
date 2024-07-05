@@ -19,36 +19,76 @@
  */
 
 function add(firstNumber, secondNumber) {
+    if (isNumber(firstNumber) && isNumber(secondNumber)) {
+        let sum = firstNumber + secondNumber;
+        console.log(`The sum of ${firstNumber} and ${secondNumber} is ${sum}`);
+        return sum;
+    }
 }
 
 function subtract(firstNumber, secondNumber) {
+    if (isNumber(firstNumber) && isNumber(secondNumber)) {
+        let difference = firstNumber - secondNumber;
+        console.log(`The difference of ${firstNumber} and ${secondNumber} is ${difference}`);
+        return difference;
+    }
 }
 
 function divide(firstNumber, secondNumber) {
+    if (isNumber(firstNumber) && isNumber(secondNumber)) {
+        let quotient = firstNumber / secondNumber;
+        console.log(`The quotient of ${firstNumber} and ${secondNumber} is ${quotient}`);
+        return quotient;
+    }
 }
 
 function multiply(firstNumber, secondNumber) {
+    if (isNumber(firstNumber) && isNumber(secondNumber)) {
+        let product = firstNumber * secondNumber;
+        console.log(`The product of ${firstNumber} and ${secondNumber} is ${product}`);
+        return product;
+    }
 }
 
 function calculate(firstNumber, secondNumber, operation) {
-
+    switch(operation) {
+        case '+':
+            add(firstNumber, secondNumber);
+            break;
+        case '-':
+            subtract(firstNumber, secondNumber);
+            break;
+        case '/':
+            divide(firstNumber, secondNumber);
+            break;
+        case '*':
+            multiply(firstNumber, secondNumber);
+            break;
+        default:
+            console.log(`Could not perform operation since given operation ${operation} is unknown.`);
+    }
 }
 
-calculate(5, 10, '+');
-calculate(5, 10, '-');
-calculate(5, 10, '/');
-calculate(5, 10, '*');
-calculate('hej', 10);
-calculate(10, 'Hej');
+/**
+ * Checks if given argument is a number.
+ * 
+ * @param {*} input the argument to do the check on
+ * @returns true if of type number, otherwise false
+ */
+function isNumber(input) {
+    if (Number.isNaN(input)) {
+        console.log(`${input} is not of type number`);
+        return false;
+    }
+    return true;
+}
 
-// getInput();
-// function getInput() {
-//     let one = parseInt(window.prompt('Ange ett tal'));
-//     let two = parseInt(window.prompt('Ange ett tal till'));
-//     let operation = window.prompt('Ange ett räknesätt');
+let firstNumber = Number(prompt('Enter a number'));
+let secondNumber = Number(prompt('Enter another number'));
+let operation = prompt('Enter an operation (+ - / *)');
 
-//     console.log(one);
-//     console.log(two);
-//     console.log(operation);
-//     calculate(one, two, operation);
-// }
+console.log(firstNumber);
+console.log(secondNumber);
+console.log(operation);
+calculate(firstNumber, secondNumber, operation);
+
